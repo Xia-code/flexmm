@@ -38,12 +38,6 @@ from flexmm.data_prep import DataPrepConfig, DataPreparator, InputConfig
 from flexmm.experiment import ExperimentConfig, ExperimentManager
 ```
 
-### パッケージ初期化ファイルの docstring
-
-```text
-__init__ file of flexmm
-```
-
 ---
 
 ## `flexmm.data_prep`
