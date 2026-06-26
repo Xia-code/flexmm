@@ -17,13 +17,15 @@ It provides a consistent path from an ordered list of sample dictionaries to:
 FlexMM deliberately does **not** prescribe a model architecture or training loop. You keep control of model construction, optimization, early stopping, and logging, while FlexMM handles the repetitive and error-prone experiment setup around them.
 
 ---
-## Project Status
+## 🚧 Project Status
 
-⚠️ **FlexMM is currently under active development.**
+FlexMM is currently under active development and is considered an early-stage project.
 
-Although the core functionality has been tested, the library is still in an early stage and may contain bugs or API changes.
+Although the library has been tested on several research projects and many parts have been refined with the assistance of ChatGPT, bugs, edge cases, or API changes may still exist. The correctness of all functions cannot be guaranteed.
 
-Bug reports, issues, and suggestions are highly appreciated. The project will continue to be improved based on user feedback.
+Please verify the behavior before using FlexMM in production or other critical applications.
+
+Bug reports, feature requests, and pull requests are always welcome. The project will continue to be actively maintained and improved.
 
 ---
 ## Why FlexMM?
