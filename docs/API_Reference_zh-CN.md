@@ -41,7 +41,6 @@ from flexmm.experiment import ExperimentConfig, ExperimentManager
 ### 包初始化文件的 docstring
 
 ```text
-20250328
 __init__ file of flexmm
 ```
 
