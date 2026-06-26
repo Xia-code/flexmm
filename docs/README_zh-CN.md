@@ -2,7 +2,7 @@
 
 [English](../README.md) | **中文** | [日本語](README_ja.md)
 
-**FlexMM** 是一个与模型架构无关的 Python 框架，用于支持具备序列结构的多模态数据准备与可复现实验编排。
+**Flexible MultiModal processing (flexmm)** 是一个与模型架构无关的 Python 框架，用于支持具备序列结构的多模态数据准备与可复现实验编排。
 
 它为从“按顺序排列的样本字典列表”到以下内容提供统一流程：
 
