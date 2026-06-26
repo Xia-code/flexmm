@@ -2,7 +2,7 @@
 
 **English** | [中文](docs/README_zh-CN.md) | [日本語](docs/README_ja.md)
 
-**FlexMM** is a model-agnostic Python framework for sequence-aware multimodal data preparation and reproducible experiment orchestration.
+**Flexible MultiModal processing (flexmm)** is a model-agnostic Python framework for sequence-aware multimodal data preparation and reproducible experiment orchestration.
 
 It provides a consistent path from an ordered list of sample dictionaries to:
 
