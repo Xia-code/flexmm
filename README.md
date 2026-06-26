@@ -96,7 +96,7 @@ pip install torch
 
 ## Documentation
 
-- [API Reference](docs/API_REFERENCE.md)
+- [API Reference](docs/API_Reference.md)
 
 ---
 ## Data model
