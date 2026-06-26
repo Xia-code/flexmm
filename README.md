@@ -17,7 +17,15 @@ It provides a consistent path from an ordered list of sample dictionaries to:
 FlexMM deliberately does **not** prescribe a model architecture or training loop. You keep control of model construction, optimization, early stopping, and logging, while FlexMM handles the repetitive and error-prone experiment setup around them.
 
 ---
+## Project Status
 
+⚠️ **FlexMM is currently under active development.**
+
+Although the core functionality has been tested, the library is still in an early stage and may contain bugs or API changes.
+
+Bug reports, issues, and suggestions are highly appreciated. The project will continue to be improved based on user feedback.
+
+---
 ## Why FlexMM?
 
 Multimodal experiments often repeat the same infrastructure work:
