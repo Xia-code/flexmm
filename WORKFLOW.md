@@ -1,5 +1,7 @@
 # FlexMM Workflow Guide
 
+**English** | [简体中文](docs/WORKFLOW_zh-CN.md) | [日本語](docs/WORKFLOW_ja.md)
+
 This document describes the complete FlexMM lifecycle, from ordered sample dictionaries to fold-specific experiment units and saved results.
 
 FlexMM separates the workflow into three layers:
