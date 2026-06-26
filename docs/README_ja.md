@@ -1,4 +1,4 @@
-# FlexMM
+# Flexible MultiModal processing (FlexMM)
 
 [English](../README.md) | [中文](README_zh-CN.md) | **日本語**
 
