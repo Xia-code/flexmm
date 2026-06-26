@@ -3181,9 +3181,3 @@ bool
 </details>
 
 ---
-
-## Documentation maintenance
-
-This file currently documents **160** classes, methods, and module-level functions extracted from the source code.
-
-When signatures or docstrings change, regenerate this file so the documentation remains synchronized with the code. For conceptual workflow explanations and end-to-end examples, see the repository [README](https://github.com/Xia-code/flexmm).
