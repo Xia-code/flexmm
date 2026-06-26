@@ -82,9 +82,6 @@ PyTorch is optional and is only required for `data_level="dataset"`, `data_level
 ```bash
 pip install torch
 ```
-
-> Before publishing, declare these dependencies in your `pyproject.toml` or equivalent packaging file so users normally need only `pip install -e .` or `pip install flexmm`.
-
 ---
 
 ## Documentation
