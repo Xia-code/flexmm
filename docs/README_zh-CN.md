@@ -1,6 +1,6 @@
 # FlexMM
 
-[English](README.md) | **简体中文** | [日本語](README_ja.md)
+[English](README.md) | **简体中文** | [日本語](docs/README_ja.md)
 
 **FlexMM** 是一个与模型架构无关的 Python 框架，用于支持具备序列结构的多模态数据准备与可复现实验编排。
 
