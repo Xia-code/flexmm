@@ -1,6 +1,6 @@
 # FlexMM ワークフローガイド
 
-[English](../WORKFLOW.md) | [简体中文](WORKFLOW_zh-CN.md) | **日本語**
+[English](WORKFLOW.md) | [简体中文](WORKFLOW_zh-CN.md) | **日本語**
 
 このドキュメントでは、順序付きサンプル辞書から fold ごとの実験単位と結果保存まで、FlexMM の完全なライフサイクルを説明します。
 
