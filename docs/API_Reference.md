@@ -1,5 +1,7 @@
 # FlexMM API Reference
 
+**English** | [简体中文](API_Reference_zh-CN.md) | [日本語](API_Reference_ja.md)
+
 This document is generated from the source-code docstrings of FlexMM. It is intended as a GitHub-friendly reference for users who need to inspect configuration classes, experiment objects, data-preparation helpers, evaluation functions, and information utilities.
 
 - **Package:** `flexmm`
