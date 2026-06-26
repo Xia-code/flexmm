@@ -1,6 +1,6 @@
 # FlexMM
 
-[English](README.md) | [简体中文](README_zh-CN.md) | **日本語**
+[English](README.md) | [简体中文](docs/README_zh-CN.md) | **日本語**
 
 **FlexMM** は、系列構造を考慮したマルチモーダルデータ準備と再現可能な実験オーケストレーションのための、モデル非依存 Python フレームワークです。
 
