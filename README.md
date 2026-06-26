@@ -87,6 +87,11 @@ pip install torch
 
 ---
 
+## Documentation
+
+- [API Reference](docs/API_REFERENCE.md)
+
+---
 ## Data model
 
 FlexMM expects an **ordered list of dictionaries**. List position is the original sample index used for alignment, sequence construction, and split bookkeeping.
