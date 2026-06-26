@@ -28,10 +28,10 @@ classifiers = [
     "Topic :: Software Development :: Libraries :: Python Modules",
 ]
 keywords = [
+    "social-signal-processing", 
     "multimodal-learning",
     "machine-learning",
     "data-preparation",
-    "experiment-management",
     "sequence-modeling",
 ]
 
