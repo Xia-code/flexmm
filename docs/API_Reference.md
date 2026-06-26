@@ -331,10 +331,8 @@ Collect keys for one config category and reject duplicated keys.
 
 ###### Parameters
 
-configs : Any
-    Data configuration objects to inspect.
-config_name : Any
-    Configuration category to collect, usually ``"input"`` or ``"target"``.
+- **`configs`** (`Any`): Data configuration objects to inspect.
+- **`config_name`** (`Any`): Configuration category to collect, usually ``"input"`` or ``"target"``.
 
 ##### `DataPrepConfig._make_seq_info`
 
@@ -375,12 +373,9 @@ Initialize the data preparator and derive sequence-related index metadata.
 
 ###### Parameters
 
-data_dicts : Any
-    Ordered sample-level dictionaries indexed by original sample position.
-data_prep_config : Any
-    Configuration object saved with the prepared data.
-split_postprocess_fn : Any
-    Optional callable receiving index folds and reference-value folds after built-in processing.
+- **`data_dicts`** (`Any`): Ordered sample-level dictionaries indexed by original sample position.
+- **`data_prep_config`** (`Any`): Configuration object saved with the prepared data.
+- **`split_postprocess_fn`** (`Any`): Optional callable receiving index folds and reference-value folds after built-in processing.
 
 #### Public methods
 
@@ -514,10 +509,8 @@ Save prepared data and metadata using explicit or configured options.
 
 ###### Parameters
 
-save_dir : Any
-    Destination directory. ``None`` uses the configured store directory.
-overwrite_data : Any
-    Whether existing serialized data may be replaced.
+- **`save_dir`** (`Any`): Destination directory. ``None`` uses the configured store directory.
+- **`overwrite_data`** (`Any`): Whether existing serialized data may be replaced.
 
 <details>
 <summary><strong>Internal methods (6)</strong></summary>
@@ -556,8 +549,7 @@ Validate custom half-open sequence ranges against the dataset length.
 
 ###### Parameters
 
-ranges : Any
-    Half-open ``(start, end)`` index ranges.
+- **`ranges`** (`Any`): Half-open ``(start, end)`` index ranges.
 
 ##### `DataPreparator._merge_ranges`
 
@@ -572,8 +564,7 @@ Merge overlapping or touching half-open ranges.
 
 ###### Parameters
 
-ranges : Any
-    Half-open ``(start, end)`` index ranges.
+- **`ranges`** (`Any`): Half-open ``(start, end)`` index ranges.
 
 ###### Returns
 
@@ -606,8 +597,7 @@ Infer the feature shape after removing batch and sequence dimensions.
 
 ###### Parameters
 
-data : Any
-    Value used by ``_get_pure_shape``.
+- **`data`** (`Any`): Value used by ``_get_pure_shape``.
 
 ###### Returns
 
@@ -631,10 +621,8 @@ Select sample dictionaries by original index and record each source index.
 
 ##### Parameters
 
-data_dicts : List[Dict]
-    Ordered sample-level dictionaries indexed by original sample position.
-used_indexes : List
-    Original sample indexes to process. ``None`` selects all samples.
+- **`data_dicts`** (`List[Dict]`): Ordered sample-level dictionaries indexed by original sample position.
+- **`used_indexes`** (`List`): Original sample indexes to process. ``None`` selects all samples.
 
 ##### Returns
 
@@ -661,24 +649,15 @@ Gather all sequence windows for one data key.
 
 ##### Parameters
 
-data_dicts : List[Dict]
-    Ordered sample-level dictionaries indexed by original sample position.
-data_key : Any
-    Dictionary key whose values are gathered.
-seq_indexes : List
-    Pairs of anchor indexes and their sequence index lists.
-dtype : Any
-    Optional NumPy dtype used for numeric output.
-seq_padding_index : int
-    Sentinel index representing a padded position.
-seq_padding_mode : Literal['constant', 'edge']
-    Padding strategy: constant values or nearest-edge repetition.
-seq_padding_value : Any
-    Value used by constant padding.
-squeeze_singleton_dims : bool
-    Whether singleton dimensions are removed.
-keep_batch_seq_dims : bool
-    Whether numeric outputs retain explicit batch and sequence dimensions.
+- **`data_dicts`** (`List[Dict]`): Ordered sample-level dictionaries indexed by original sample position.
+- **`data_key`** (`Any`): Dictionary key whose values are gathered.
+- **`seq_indexes`** (`List`): Pairs of anchor indexes and their sequence index lists.
+- **`dtype`** (`Any`): Optional NumPy dtype used for numeric output.
+- **`seq_padding_index`** (`int`): Sentinel index representing a padded position.
+- **`seq_padding_mode`** (`Literal['constant', 'edge']`): Padding strategy: constant values or nearest-edge repetition.
+- **`seq_padding_value`** (`Any`): Value used by constant padding.
+- **`squeeze_singleton_dims`** (`bool`): Whether singleton dimensions are removed.
+- **`keep_batch_seq_dims`** (`bool`): Whether numeric outputs retain explicit batch and sequence dimensions.
 
 ##### Returns
 
@@ -706,26 +685,16 @@ Gather one sequence of values, applying constant or edge padding.
 
 ##### Parameters
 
-data_dicts : Any
-    Ordered sample-level dictionaries indexed by original sample position.
-data_key : Any
-    Dictionary key whose values are gathered.
-used_indexes : Any
-    Original sample indexes to process. ``None`` selects all samples.
-sample_data : Any
-    Optional representative value used to infer type and shape.
-data_operation : Any
-    Internal gathering mode for arrays, tensors, nested lists, or scalars.
-dtype : Any
-    Optional NumPy dtype used for numeric output.
-seq_padding_index : Any
-    Sentinel index representing a padded position.
-seq_padding_mode : Literal['constant', 'edge']
-    Padding strategy: constant values or nearest-edge repetition.
-seq_padding_value : Any
-    Value used by constant padding.
-squeeze_singleton_dims : Any
-    Whether singleton dimensions are removed.
+- **`data_dicts`** (`Any`): Ordered sample-level dictionaries indexed by original sample position.
+- **`data_key`** (`Any`): Dictionary key whose values are gathered.
+- **`used_indexes`** (`Any`): Original sample indexes to process. ``None`` selects all samples.
+- **`sample_data`** (`Any`): Optional representative value used to infer type and shape.
+- **`data_operation`** (`Any`): Internal gathering mode for arrays, tensors, nested lists, or scalars.
+- **`dtype`** (`Any`): Optional NumPy dtype used for numeric output.
+- **`seq_padding_index`** (`Any`): Sentinel index representing a padded position.
+- **`seq_padding_mode`** (`Literal['constant', 'edge']`): Padding strategy: constant values or nearest-edge repetition.
+- **`seq_padding_value`** (`Any`): Value used by constant padding.
+- **`squeeze_singleton_dims`** (`Any`): Whether singleton dimensions are removed.
 
 ##### Returns
 
@@ -752,24 +721,15 @@ Construct strided context windows around filtered anchor indexes.
 
 ##### Parameters
 
-index_list : List
-    Ordered original sample indexes or generic index-like values.
-seq_len_before : int
-    Number of context steps before each anchor.
-seq_len_after : int
-    Number of context steps after each anchor.
-step_offset : int
-    Relative offset associated with the configured data key.
-stride : int
-    Distance between neighboring context positions.
-seq_pos_from_start : int
-    Number of candidate anchors excluded from the range start.
-seq_pos_from_end : int
-    Number of candidate anchors excluded from the range end.
-padding : bool
-    Whether incomplete boundary windows are padded.
-padding_index : int
-    Sentinel index inserted for padded positions.
+- **`index_list`** (`List`): Ordered original sample indexes or generic index-like values.
+- **`seq_len_before`** (`int`): Number of context steps before each anchor.
+- **`seq_len_after`** (`int`): Number of context steps after each anchor.
+- **`step_offset`** (`int`): Relative offset associated with the configured data key.
+- **`stride`** (`int`): Distance between neighboring context positions.
+- **`seq_pos_from_start`** (`int`): Number of candidate anchors excluded from the range start.
+- **`seq_pos_from_end`** (`int`): Number of candidate anchors excluded from the range end.
+- **`padding`** (`bool`): Whether incomplete boundary windows are padded.
+- **`padding_index`** (`int`): Sentinel index inserted for padded positions.
 
 ##### Returns
 
@@ -792,16 +752,11 @@ Extract a strided window around one position in an index list.
 
 ##### Parameters
 
-index_list : Any
-    Ordered original sample indexes or generic index-like values.
-i : Any
-    Center position within ``index_list``.
-stride : Any
-    Distance between neighboring context positions.
-seq_len_before : Any
-    Number of context steps before each anchor.
-seq_len_after : Any
-    Number of context steps after each anchor.
+- **`index_list`** (`Any`): Ordered original sample indexes or generic index-like values.
+- **`i`** (`Any`): Center position within ``index_list``.
+- **`stride`** (`Any`): Distance between neighboring context positions.
+- **`seq_len_before`** (`Any`): Number of context steps before each anchor.
+- **`seq_len_after`** (`Any`): Number of context steps after each anchor.
 
 ##### Returns
 
@@ -837,42 +792,24 @@ Split reference groups independently so test groups never appear in train or val
 
 ##### Parameters
 
-data_dicts : List[Dict]
-    Ordered sample-level dictionaries indexed by original sample position.
-split_ref_key : Any
-    Dictionary key defining groups such as speakers, participants, or sessions.
-split_mode : Literal['holdout', 'kfold', 'leave_one_out']
-    Test-split strategy: holdout, k-fold, or leave-one-out.
-folds : int
-    Requested number of folds for k-fold splitting.
-train_valid_ratio : float
-    Fraction of non-test data assigned to training.
-holdout_test_ratio : float
-    Fraction assigned to test in holdout mode.
-use_stratified_split : bool
-    Whether scalar targets are used to preserve target proportions.
-split_valid_by : Literal['index', 'ref_key']
-    Whether independent validation data are separated by indexes or reference groups.
-focused_target_key : Any
-    Target key used for stratification.
-is_focused_key_multi_dim : bool
-    Whether the focused target contains more than one value per sample.
-target2indexes : Optional[Dict]
-    Optional mapping from targets or bins to original sample indexes.
-focused_target_task_type : Literal['c', 'r']
-    Focused target type: ``"c"`` for classification or ``"r"`` for regression.
-stratified_bin_num : Optional[int]
-    Number of regression bins used for stratification.
-stratified_bin_size : Optional[float]
-    Width of regression bins used for stratification.
-used_indexes : Optional[List[int]]
-    Original sample indexes to process. ``None`` selects all samples.
-train_ref_values_override : Optional[Union[Mapping, Sequence]]
-    Optional train reference groups, shared or specified per fold.
-valid_ref_values_override : Optional[Union[Mapping, Sequence]]
-    Optional validation reference groups, shared or specified per fold.
-test_ref_values_override : Optional[Union[Mapping, Sequence]]
-    Optional test reference groups specified for one or more folds.
+- **`data_dicts`** (`List[Dict]`): Ordered sample-level dictionaries indexed by original sample position.
+- **`split_ref_key`** (`Any`): Dictionary key defining groups such as speakers, participants, or sessions.
+- **`split_mode`** (`Literal['holdout', 'kfold', 'leave_one_out']`): Test-split strategy: holdout, k-fold, or leave-one-out.
+- **`folds`** (`int`): Requested number of folds for k-fold splitting.
+- **`train_valid_ratio`** (`float`): Fraction of non-test data assigned to training.
+- **`holdout_test_ratio`** (`float`): Fraction assigned to test in holdout mode.
+- **`use_stratified_split`** (`bool`): Whether scalar targets are used to preserve target proportions.
+- **`split_valid_by`** (`Literal['index', 'ref_key']`): Whether independent validation data are separated by indexes or reference groups.
+- **`focused_target_key`** (`Any`): Target key used for stratification.
+- **`is_focused_key_multi_dim`** (`bool`): Whether the focused target contains more than one value per sample.
+- **`target2indexes`** (`Optional[Dict]`): Optional mapping from targets or bins to original sample indexes.
+- **`focused_target_task_type`** (`Literal['c', 'r']`): Focused target type: ``"c"`` for classification or ``"r"`` for regression.
+- **`stratified_bin_num`** (`Optional[int]`): Number of regression bins used for stratification.
+- **`stratified_bin_size`** (`Optional[float]`): Width of regression bins used for stratification.
+- **`used_indexes`** (`Optional[List[int]]`): Original sample indexes to process. ``None`` selects all samples.
+- **`train_ref_values_override`** (`Optional[Union[Mapping, Sequence]]`): Optional train reference groups, shared or specified per fold.
+- **`valid_ref_values_override`** (`Optional[Union[Mapping, Sequence]]`): Optional validation reference groups, shared or specified per fold.
+- **`test_ref_values_override`** (`Optional[Union[Mapping, Sequence]]`): Optional test reference groups specified for one or more folds.
 
 ##### Returns
 
@@ -905,36 +842,21 @@ Split samples within every reference group so groups may appear in all sets.
 
 ##### Parameters
 
-data_dicts : List[Dict]
-    Ordered sample-level dictionaries indexed by original sample position.
-split_ref_key : Any
-    Dictionary key defining groups such as speakers, participants, or sessions.
-split_mode : Literal['holdout', 'kfold', 'leave_one_out']
-    Test-split strategy: holdout, k-fold, or leave-one-out.
-folds : int
-    Requested number of folds for k-fold splitting.
-train_valid_ratio : float
-    Fraction of non-test data assigned to training.
-holdout_test_ratio : float
-    Fraction assigned to test in holdout mode.
-use_stratified_split : bool
-    Whether scalar targets are used to preserve target proportions.
-split_valid_by : Literal['index', 'ref_key']
-    Whether independent validation data are separated by indexes or reference groups.
-focused_target_key : Any
-    Target key used for stratification.
-is_focused_key_multi_dim : bool
-    Whether the focused target contains more than one value per sample.
-target2indexes : Optional[Dict]
-    Optional mapping from targets or bins to original sample indexes.
-focused_target_task_type : Literal['c', 'r']
-    Focused target type: ``"c"`` for classification or ``"r"`` for regression.
-stratified_bin_num : Optional[int]
-    Number of regression bins used for stratification.
-stratified_bin_size : Optional[float]
-    Width of regression bins used for stratification.
-used_indexes : Optional[List[int]]
-    Original sample indexes to process. ``None`` selects all samples.
+- **`data_dicts`** (`List[Dict]`): Ordered sample-level dictionaries indexed by original sample position.
+- **`split_ref_key`** (`Any`): Dictionary key defining groups such as speakers, participants, or sessions.
+- **`split_mode`** (`Literal['holdout', 'kfold', 'leave_one_out']`): Test-split strategy: holdout, k-fold, or leave-one-out.
+- **`folds`** (`int`): Requested number of folds for k-fold splitting.
+- **`train_valid_ratio`** (`float`): Fraction of non-test data assigned to training.
+- **`holdout_test_ratio`** (`float`): Fraction assigned to test in holdout mode.
+- **`use_stratified_split`** (`bool`): Whether scalar targets are used to preserve target proportions.
+- **`split_valid_by`** (`Literal['index', 'ref_key']`): Whether independent validation data are separated by indexes or reference groups.
+- **`focused_target_key`** (`Any`): Target key used for stratification.
+- **`is_focused_key_multi_dim`** (`bool`): Whether the focused target contains more than one value per sample.
+- **`target2indexes`** (`Optional[Dict]`): Optional mapping from targets or bins to original sample indexes.
+- **`focused_target_task_type`** (`Literal['c', 'r']`): Focused target type: ``"c"`` for classification or ``"r"`` for regression.
+- **`stratified_bin_num`** (`Optional[int]`): Number of regression bins used for stratification.
+- **`stratified_bin_size`** (`Optional[float]`): Width of regression bins used for stratification.
+- **`used_indexes`** (`Optional[List[int]]`): Original sample indexes to process. ``None`` selects all samples.
 
 ##### Returns
 
@@ -967,36 +889,21 @@ Split sample indexes without enforcing reference-group independence.
 
 ##### Parameters
 
-data_dicts : List[Dict]
-    Ordered sample-level dictionaries indexed by original sample position.
-split_ref_key : Any
-    Dictionary key defining groups such as speakers, participants, or sessions.
-split_mode : Literal['holdout', 'kfold', 'leave_one_out']
-    Test-split strategy: holdout, k-fold, or leave-one-out.
-folds : int
-    Requested number of folds for k-fold splitting.
-train_valid_ratio : float
-    Fraction of non-test data assigned to training.
-holdout_test_ratio : float
-    Fraction assigned to test in holdout mode.
-use_stratified_split : bool
-    Whether scalar targets are used to preserve target proportions.
-split_valid_by : Literal['index', 'ref_key']
-    Whether independent validation data are separated by indexes or reference groups.
-target2indexes : Optional[Dict]
-    Optional mapping from targets or bins to original sample indexes.
-focused_target_key : Any
-    Target key used for stratification.
-is_focused_key_multi_dim : bool
-    Whether the focused target contains more than one value per sample.
-focused_target_task_type : Literal['c', 'r']
-    Focused target type: ``"c"`` for classification or ``"r"`` for regression.
-stratified_bin_num : Optional[int]
-    Number of regression bins used for stratification.
-stratified_bin_size : Optional[float]
-    Width of regression bins used for stratification.
-used_indexes : Optional[List[int]]
-    Original sample indexes to process. ``None`` selects all samples.
+- **`data_dicts`** (`List[Dict]`): Ordered sample-level dictionaries indexed by original sample position.
+- **`split_ref_key`** (`Any`): Dictionary key defining groups such as speakers, participants, or sessions.
+- **`split_mode`** (`Literal['holdout', 'kfold', 'leave_one_out']`): Test-split strategy: holdout, k-fold, or leave-one-out.
+- **`folds`** (`int`): Requested number of folds for k-fold splitting.
+- **`train_valid_ratio`** (`float`): Fraction of non-test data assigned to training.
+- **`holdout_test_ratio`** (`float`): Fraction assigned to test in holdout mode.
+- **`use_stratified_split`** (`bool`): Whether scalar targets are used to preserve target proportions.
+- **`split_valid_by`** (`Literal['index', 'ref_key']`): Whether independent validation data are separated by indexes or reference groups.
+- **`target2indexes`** (`Optional[Dict]`): Optional mapping from targets or bins to original sample indexes.
+- **`focused_target_key`** (`Any`): Target key used for stratification.
+- **`is_focused_key_multi_dim`** (`bool`): Whether the focused target contains more than one value per sample.
+- **`focused_target_task_type`** (`Literal['c', 'r']`): Focused target type: ``"c"`` for classification or ``"r"`` for regression.
+- **`stratified_bin_num`** (`Optional[int]`): Number of regression bins used for stratification.
+- **`stratified_bin_size`** (`Optional[float]`): Width of regression bins used for stratification.
+- **`used_indexes`** (`Optional[List[int]]`): Original sample indexes to process. ``None`` selects all samples.
 
 ##### Returns
 
@@ -1023,22 +930,14 @@ Remove lower-priority anchors whose sequence contents overlap protected splits.
 
 ##### Parameters
 
-data_dicts : Any
-    Ordered sample-level dictionaries indexed by original sample position.
-index_split_folds : Any
-    Per-fold train, validation, and test original indexes.
-anchore_index2seq_indexes : Any
-    Mapping from each anchor to all original indexes used by its sequence.
-split_ref_key : Any
-    Dictionary key defining groups such as speakers, participants, or sessions.
-is_test_train_no_seq_overlap : bool
-    Whether train/test sequence overlap is prohibited.
-is_train_valid_no_seq_overlap : bool
-    Whether train/validation sequence overlap is prohibited.
-priority_order : Any
-    Highest-to-lowest split priority used when removing overlap.
-padding_index : int
-    Sentinel index inserted for padded positions.
+- **`data_dicts`** (`Any`): Ordered sample-level dictionaries indexed by original sample position.
+- **`index_split_folds`** (`Any`): Per-fold train, validation, and test original indexes.
+- **`anchore_index2seq_indexes`** (`Any`): Mapping from each anchor to all original indexes used by its sequence.
+- **`split_ref_key`** (`Any`): Dictionary key defining groups such as speakers, participants, or sessions.
+- **`is_test_train_no_seq_overlap`** (`bool`): Whether train/test sequence overlap is prohibited.
+- **`is_train_valid_no_seq_overlap`** (`bool`): Whether train/validation sequence overlap is prohibited.
+- **`priority_order`** (`Any`): Highest-to-lowest split priority used when removing overlap.
+- **`padding_index`** (`int`): Sentinel index inserted for padded positions.
 
 ##### Returns
 
@@ -1059,12 +958,9 @@ Build class statistics, class-ID mappings, and original-index groups.
 
 ##### Parameters
 
-data_dicts : Any
-    Ordered sample-level dictionaries indexed by original sample position.
-target_ref_key : Any
-    Dictionary key containing the target value.
-used_indexes : Any
-    Original sample indexes to process. ``None`` selects all samples.
+- **`data_dicts`** (`Any`): Ordered sample-level dictionaries indexed by original sample position.
+- **`target_ref_key`** (`Any`): Dictionary key containing the target value.
+- **`used_indexes`** (`Any`): Original sample indexes to process. ``None`` selects all samples.
 
 ##### Returns
 
@@ -1088,18 +984,12 @@ Bin scalar regression targets and collect bin statistics and indexes.
 
 ##### Parameters
 
-data_dicts : Any
-    Ordered sample-level dictionaries indexed by original sample position.
-target_ref_key : Any
-    Dictionary key containing the target value.
-used_indexes : Any
-    Original sample indexes to process. ``None`` selects all samples.
-stratified_bin_size : Any
-    Width of regression bins used for stratification.
-stratified_bin_num : Any
-    Number of regression bins used for stratification.
-bin_closed_side : Literal['upper', 'lower']
-    Boundary convention for regression bins.
+- **`data_dicts`** (`Any`): Ordered sample-level dictionaries indexed by original sample position.
+- **`target_ref_key`** (`Any`): Dictionary key containing the target value.
+- **`used_indexes`** (`Any`): Original sample indexes to process. ``None`` selects all samples.
+- **`stratified_bin_size`** (`Any`): Width of regression bins used for stratification.
+- **`stratified_bin_num`** (`Any`): Number of regression bins used for stratification.
+- **`bin_closed_side`** (`Literal['upper', 'lower']`): Boundary convention for regression bins.
 
 ##### Returns
 
@@ -1123,18 +1013,12 @@ Map each class or regression bin to its original sample indexes.
 
 ##### Parameters
 
-data_dicts : Any
-    Ordered sample-level dictionaries indexed by original sample position.
-target_ref_key : Any
-    Dictionary key containing the target value.
-used_indexes : Any
-    Original sample indexes to process. ``None`` selects all samples.
-task_type : Any
-    Target type: classification or regression.
-stratified_bin_size : Optional[float]
-    Width of regression bins used for stratification.
-stratified_bin_num : Optional[int]
-    Number of regression bins used for stratification.
+- **`data_dicts`** (`Any`): Ordered sample-level dictionaries indexed by original sample position.
+- **`target_ref_key`** (`Any`): Dictionary key containing the target value.
+- **`used_indexes`** (`Any`): Original sample indexes to process. ``None`` selects all samples.
+- **`task_type`** (`Any`): Target type: classification or regression.
+- **`stratified_bin_size`** (`Optional[float]`): Width of regression bins used for stratification.
+- **`stratified_bin_num`** (`Optional[int]`): Number of regression bins used for stratification.
 
 ##### Returns
 
@@ -1158,18 +1042,12 @@ Calculate effective regression-bin width and count.
 
 ##### Parameters
 
-data_dicts : Any
-    Ordered sample-level dictionaries indexed by original sample position.
-target_ref_key : Any
-    Dictionary key containing the target value.
-used_indexes : Any
-    Original sample indexes to process. ``None`` selects all samples.
-bin_size : Any
-    Requested regression-bin width.
-bin_num : Any
-    Requested number of regression bins.
-target_list : Any
-    Optional pre-collected scalar targets.
+- **`data_dicts`** (`Any`): Ordered sample-level dictionaries indexed by original sample position.
+- **`target_ref_key`** (`Any`): Dictionary key containing the target value.
+- **`used_indexes`** (`Any`): Original sample indexes to process. ``None`` selects all samples.
+- **`bin_size`** (`Any`): Requested regression-bin width.
+- **`bin_num`** (`Any`): Requested number of regression bins.
+- **`target_list`** (`Any`): Optional pre-collected scalar targets.
 
 ##### Returns
 
@@ -1191,14 +1069,10 @@ Write a JSON configuration template for specified data keys.
 
 ##### Parameters
 
-file : str
-    Path to the JSON configuration file.
-cls_target_keys : Union[List, str, None]
-    Classification target key or keys.
-regression_target_keys : Union[List, str, None]
-    Regression target key or keys.
-input_keys : Union[List, str, None]
-    Model-input key or keys.
+- **`file`** (`str`): Path to the JSON configuration file.
+- **`cls_target_keys`** (`Union[List, str, None]`): Classification target key or keys.
+- **`regression_target_keys`** (`Union[List, str, None]`): Regression target key or keys.
+- **`input_keys`** (`Union[List, str, None]`): Model-input key or keys.
 
 #### `load_config`
 
@@ -1210,8 +1084,7 @@ Load a JSON configuration file into configuration objects.
 
 ##### Parameters
 
-file : str
-    Path to the JSON configuration file.
+- **`file`** (`str`): Path to the JSON configuration file.
 
 ##### Returns
 
@@ -1228,8 +1101,7 @@ Reconstruct nested configuration objects from parsed JSON data.
 
 ##### Parameters
 
-config_json : Any
-    Parsed configuration representation produced by ``to_json``.
+- **`config_json`** (`Any`): Parsed configuration representation produced by ``to_json``.
 
 ##### Returns
 
@@ -1252,16 +1124,11 @@ Save prepared data and metadata using explicit or configured options.
 
 ##### Parameters
 
-collected_data : Any
-    Prepared input and target arrays or lists.
-info_dict : Any
-    Preparation metadata and split information.
-data_prep_config : Any
-    Configuration object saved with the prepared data.
-save_dir : Any
-    Destination directory. ``None`` uses the configured store directory.
-overwrite_data : Any
-    Whether existing serialized data may be replaced.
+- **`collected_data`** (`Any`): Prepared input and target arrays or lists.
+- **`info_dict`** (`Any`): Preparation metadata and split information.
+- **`data_prep_config`** (`Any`): Configuration object saved with the prepared data.
+- **`save_dir`** (`Any`): Destination directory. ``None`` uses the configured store directory.
+- **`overwrite_data`** (`Any`): Whether existing serialized data may be replaced.
 
 #### `load_data`
 
@@ -1273,8 +1140,7 @@ Load prepared data, metadata, and configuration from a directory.
 
 ##### Parameters
 
-data_dir : Any
-    Directory containing serialized prepared-data files.
+- **`data_dir`** (`Any`): Directory containing serialized prepared-data files.
 
 ##### Returns
 
@@ -1295,12 +1161,9 @@ Collect target values from selected original sample indexes.
 
 ##### Parameters
 
-data_dicts : Any
-    Ordered sample-level dictionaries indexed by original sample position.
-target_ref_key : Any
-    Dictionary key containing the target value.
-used_indexes : Any
-    Original sample indexes to process. ``None`` selects all samples.
+- **`data_dicts`** (`Any`): Ordered sample-level dictionaries indexed by original sample position.
+- **`target_ref_key`** (`Any`): Dictionary key containing the target value.
+- **`used_indexes`** (`Any`): Original sample indexes to process. ``None`` selects all samples.
 
 ##### Returns
 
@@ -1321,12 +1184,9 @@ Collect and normalize selected target values to Python scalars.
 
 ##### Parameters
 
-data_dicts : Any
-    Ordered sample-level dictionaries indexed by original sample position.
-target_ref_key : Any
-    Dictionary key containing the target value.
-used_indexes : Any
-    Original sample indexes to process. ``None`` selects all samples.
+- **`data_dicts`** (`Any`): Ordered sample-level dictionaries indexed by original sample position.
+- **`target_ref_key`** (`Any`): Dictionary key containing the target value.
+- **`used_indexes`** (`Any`): Original sample indexes to process. ``None`` selects all samples.
 
 ##### Returns
 
@@ -1343,8 +1203,7 @@ Convert a scalar-like Python, NumPy, or PyTorch value to a Python scalar.
 
 ##### Parameters
 
-target_value : Any
-    Scalar or one-element scalar-like value to convert.
+- **`target_value`** (`Any`): Scalar or one-element scalar-like value to convert.
 
 ##### Returns
 
@@ -1365,12 +1224,9 @@ Calculate feature-wise mean and standard deviation over selected samples.
 
 ##### Parameters
 
-data_dicts : Any
-    Ordered sample-level dictionaries indexed by original sample position.
-ref_key : Any
-    Dictionary key containing values used in a calculation.
-index_list : Any
-    Ordered original sample indexes or generic index-like values.
+- **`data_dicts`** (`Any`): Ordered sample-level dictionaries indexed by original sample position.
+- **`ref_key`** (`Any`): Dictionary key containing values used in a calculation.
+- **`index_list`** (`Any`): Ordered original sample indexes or generic index-like values.
 
 ##### Returns
 
@@ -1398,16 +1254,11 @@ Select the test indexes for one fold and split mode.
 
 ##### Parameters
 
-indexes_list : Any
-    Ordered indexes eligible for the current test selection.
-current_split_group : Any
-    Zero-based fold position.
-num_split_group : Any
-    Total number of split groups.
-one_fold_test_ratio : Any
-    Holdout ratio used when ``split_mode="holdout"``.
-split_mode : Any
-    Test-split strategy: holdout, k-fold, or leave-one-out.
+- **`indexes_list`** (`Any`): Ordered indexes eligible for the current test selection.
+- **`current_split_group`** (`Any`): Zero-based fold position.
+- **`num_split_group`** (`Any`): Total number of split groups.
+- **`one_fold_test_ratio`** (`Any`): Holdout ratio used when ``split_mode="holdout"``.
+- **`split_mode`** (`Any`): Test-split strategy: holdout, k-fold, or leave-one-out.
 
 ##### Returns
 
@@ -1427,10 +1278,8 @@ Assign at most one index to a requested fold position.
 
 ##### Parameters
 
-index_list : Any
-    Ordered original sample indexes or generic index-like values.
-current_group_index : Any
-    Zero-based group position.
+- **`index_list`** (`Any`): Ordered original sample indexes or generic index-like values.
+- **`current_group_index`** (`Any`): Zero-based group position.
 
 ##### Returns
 
@@ -1450,10 +1299,8 @@ Collect unique sequence indexes referenced by a set of anchors.
 
 ##### Parameters
 
-anchore_index_list : Any
-    Anchor indexes whose sequence contents are summarized.
-anchore_index2seq_index : Any
-    Mapping from anchor indexes to sequence index lists.
+- **`anchore_index_list`** (`Any`): Anchor indexes whose sequence contents are summarized.
+- **`anchore_index2seq_index`** (`Any`): Mapping from anchor indexes to sequence index lists.
 
 ##### Returns
 
@@ -1475,14 +1322,10 @@ Validate common split modes, fold counts, and ratios.
 
 ##### Parameters
 
-split_mode : Any
-    Test-split strategy: holdout, k-fold, or leave-one-out.
-folds : Any
-    Requested number of folds for k-fold splitting.
-train_valid_ratio : Any
-    Fraction of non-test data assigned to training.
-holdout_test_ratio : Any
-    Fraction assigned to test in holdout mode.
+- **`split_mode`** (`Any`): Test-split strategy: holdout, k-fold, or leave-one-out.
+- **`folds`** (`Any`): Requested number of folds for k-fold splitting.
+- **`train_valid_ratio`** (`Any`): Fraction of non-test data assigned to training.
+- **`holdout_test_ratio`** (`Any`): Fraction assigned to test in holdout mode.
 
 #### `_normalize_used_indexes`
 
@@ -1497,10 +1340,8 @@ Resolve and validate the original sample indexes used for preparation.
 
 ##### Parameters
 
-data_dicts : Any
-    Ordered sample-level dictionaries indexed by original sample position.
-used_indexes : Any
-    Original sample indexes to process. ``None`` selects all samples.
+- **`data_dicts`** (`Any`): Ordered sample-level dictionaries indexed by original sample position.
+- **`used_indexes`** (`Any`): Original sample indexes to process. ``None`` selects all samples.
 
 ##### Returns
 
@@ -1521,12 +1362,9 @@ Partition ordered values into nearly equal chunks.
 
 ##### Parameters
 
-values : Any
-    Values to process.
-num_chunks : Any
-    Number of chunks to create.
-reverse : Any
-    Whether chunk order is reversed after partitioning.
+- **`values`** (`Any`): Values to process.
+- **`num_chunks`** (`Any`): Number of chunks to create.
+- **`reverse`** (`Any`): Whether chunk order is reversed after partitioning.
 
 ##### Returns
 
@@ -1546,10 +1384,8 @@ Calculate a nonempty holdout size while retaining training data when possible.
 
 ##### Parameters
 
-num_items : Any
-    Number of available items.
-ratio : Any
-    Requested fraction.
+- **`num_items`** (`Any`): Number of available items.
+- **`ratio`** (`Any`): Requested fraction.
 
 ##### Returns
 
@@ -1569,10 +1405,8 @@ Split ordered indexes into nonempty train and validation subsets when possible.
 
 ##### Parameters
 
-indexes : Any
-    Ordered candidate indexes.
-train_ratio : Any
-    Fraction assigned to training.
+- **`indexes`** (`Any`): Ordered candidate indexes.
+- **`train_ratio`** (`Any`): Fraction assigned to training.
 
 ##### Returns
 
@@ -1593,12 +1427,9 @@ Split candidate indexes within each target stratum.
 
 ##### Parameters
 
-indexes : Any
-    Ordered candidate indexes.
-target2indexes : Any
-    Optional mapping from targets or bins to original sample indexes.
-train_ratio : Any
-    Fraction assigned to training.
+- **`indexes`** (`Any`): Ordered candidate indexes.
+- **`target2indexes`** (`Any`): Optional mapping from targets or bins to original sample indexes.
+- **`train_ratio`** (`Any`): Fraction assigned to training.
 
 ##### Returns
 
@@ -1623,20 +1454,13 @@ Create or filter a target-to-original-index mapping.
 
 ##### Parameters
 
-data_dicts : Any
-    Ordered sample-level dictionaries indexed by original sample position.
-target_key : Any
-    Dictionary key containing target values.
-used_indexes : Any
-    Original sample indexes to process. ``None`` selects all samples.
-task_type : Any
-    Target type: classification or regression.
-target2indexes : Any
-    Optional mapping from targets or bins to original sample indexes.
-stratified_bin_size : Any
-    Width of regression bins used for stratification.
-stratified_bin_num : Any
-    Number of regression bins used for stratification.
+- **`data_dicts`** (`Any`): Ordered sample-level dictionaries indexed by original sample position.
+- **`target_key`** (`Any`): Dictionary key containing target values.
+- **`used_indexes`** (`Any`): Original sample indexes to process. ``None`` selects all samples.
+- **`task_type`** (`Any`): Target type: classification or regression.
+- **`target2indexes`** (`Any`): Optional mapping from targets or bins to original sample indexes.
+- **`stratified_bin_size`** (`Any`): Width of regression bins used for stratification.
+- **`stratified_bin_num`** (`Any`): Number of regression bins used for stratification.
 
 ##### Returns
 
@@ -1653,8 +1477,7 @@ Normalize split overrides into a list of per-fold value lists.
 
 ##### Parameters
 
-override : Any
-    User-provided split values in shared or per-fold form.
+- **`override`** (`Any`): User-provided split values in shared or per-fold form.
 
 ##### Returns
 
@@ -1674,10 +1497,8 @@ Read an override for one fold, allowing one shared override.
 
 ##### Parameters
 
-override : Any
-    User-provided split values in shared or per-fold form.
-fold : Any
-    Zero-based fold identifier.
+- **`override`** (`Any`): User-provided split values in shared or per-fold form.
+- **`fold`** (`Any`): Zero-based fold identifier.
 
 ##### Returns
 
@@ -1699,14 +1520,10 @@ Resolve automatic or user-defined train and validation reference groups.
 
 ##### Parameters
 
-candidate_values : Any
-    Reference values not assigned to test.
-train_ratio : Any
-    Fraction assigned to training.
-train_override : Any
-    Optional explicitly assigned training reference values.
-valid_override : Any
-    Optional explicitly assigned validation reference values.
+- **`candidate_values`** (`Any`): Reference values not assigned to test.
+- **`train_ratio`** (`Any`): Fraction assigned to training.
+- **`train_override`** (`Any`): Optional explicitly assigned training reference values.
+- **`valid_override`** (`Any`): Optional explicitly assigned validation reference values.
 
 ##### Returns
 
@@ -1727,12 +1544,9 @@ Ensure override reference values exist in the available groups.
 
 ##### Parameters
 
-values : Any
-    Values to process.
-available_values : Any
-    Reference values available for assignment.
-split_name : Any
-    Human-readable split name used in error messages.
+- **`values`** (`Any`): Values to process.
+- **`available_values`** (`Any`): Reference values available for assignment.
+- **`split_name`** (`Any`): Human-readable split name used in error messages.
 
 #### `_build_ref_value_split_dict`
 
@@ -1748,12 +1562,9 @@ Derive unique reference values for each split from original indexes.
 
 ##### Parameters
 
-data_dicts : Any
-    Ordered sample-level dictionaries indexed by original sample position.
-split_dict : Any
-    One train/validation/test index dictionary.
-split_ref_key : Any
-    Dictionary key defining groups such as speakers, participants, or sessions.
+- **`data_dicts`** (`Any`): Ordered sample-level dictionaries indexed by original sample position.
+- **`split_dict`** (`Any`): One train/validation/test index dictionary.
+- **`split_ref_key`** (`Any`): Dictionary key defining groups such as speakers, participants, or sessions.
 
 ##### Returns
 
@@ -1774,12 +1585,9 @@ Derive reference-value summaries for every index fold.
 
 ##### Parameters
 
-data_dicts : Any
-    Ordered sample-level dictionaries indexed by original sample position.
-index_split_folds : Any
-    Per-fold train, validation, and test original indexes.
-split_ref_key : Any
-    Dictionary key defining groups such as speakers, participants, or sessions.
+- **`data_dicts`** (`Any`): Ordered sample-level dictionaries indexed by original sample position.
+- **`index_split_folds`** (`Any`): Per-fold train, validation, and test original indexes.
+- **`split_ref_key`** (`Any`): Dictionary key defining groups such as speakers, participants, or sessions.
 
 ##### Returns
 
@@ -1796,8 +1604,7 @@ Normalize list- or mapping-based folds to a consistent integer-keyed mapping.
 
 ##### Parameters
 
-index_split_folds : Any
-    Per-fold train, validation, and test original indexes.
+- **`index_split_folds`** (`Any`): Per-fold train, validation, and test original indexes.
 
 ##### Returns
 
@@ -1817,10 +1624,8 @@ Ensure one fold is disjoint, complete, and limited to allowed indexes.
 
 ##### Parameters
 
-split_dict : Any
-    One train/validation/test index dictionary.
-allowed_indexes : Any
-    Complete set of indexes that must be assigned exactly once.
+- **`split_dict`** (`Any`): One train/validation/test index dictionary.
+- **`allowed_indexes`** (`Any`): Complete set of indexes that must be assigned exactly once.
 
 #### `_flatten`
 
@@ -1832,8 +1637,7 @@ Flatten one level of nested iterables.
 
 ##### Parameters
 
-iterables : Any
-    Nested iterables to flatten by one level.
+- **`iterables`** (`Any`): Nested iterables to flatten by one level.
 
 ##### Returns
 
@@ -1850,8 +1654,7 @@ Remove repeated values while preserving first-occurrence order.
 
 ##### Parameters
 
-values : Any
-    Values to process.
+- **`values`** (`Any`): Values to process.
 
 ##### Returns
 
@@ -1872,12 +1675,9 @@ Create contiguous bin boundaries spanning observed target values.
 
 ##### Parameters
 
-values : Any
-    Values to process.
-bin_size : Any
-    Requested regression-bin width.
-bin_num : Any
-    Requested number of regression bins.
+- **`values`** (`Any`): Values to process.
+- **`bin_size`** (`Any`): Requested regression-bin width.
+- **`bin_num`** (`Any`): Requested number of regression bins.
 
 ##### Returns
 
@@ -1898,12 +1698,9 @@ Find the bin containing one scalar regression target.
 
 ##### Parameters
 
-value : Any
-    Scalar regression target.
-bin_ranges : Any
-    Mapping from bin IDs to lower and upper boundaries.
-bin_closed_side : Any
-    Boundary convention for regression bins.
+- **`value`** (`Any`): Scalar regression target.
+- **`bin_ranges`** (`Any`): Mapping from bin IDs to lower and upper boundaries.
+- **`bin_closed_side`** (`Any`): Boundary convention for regression bins.
 
 ##### Returns
 
@@ -1924,12 +1721,9 @@ Convert a scalar target to the configured boundary representative of its bin.
 
 ##### Parameters
 
-value : Any
-    Scalar regression target.
-bin_ranges : Any
-    Mapping from bin IDs to lower and upper boundaries.
-bin_closed_side : Any
-    Boundary convention for regression bins.
+- **`value`** (`Any`): Scalar regression target.
+- **`bin_ranges`** (`Any`): Mapping from bin IDs to lower and upper boundaries.
+- **`bin_closed_side`** (`Any`): Boundary convention for regression bins.
 
 ##### Returns
 
@@ -1959,8 +1753,7 @@ Normalize a scalar, tuple, or NumPy array into a Python list.
 
 ##### Parameters
 
-content : Any
-    Scalar or collection to normalize into a list.
+- **`content`** (`Any`): Scalar or collection to normalize into a list.
 
 ##### Returns
 
@@ -2042,38 +1835,18 @@ Configure experiment combinations, data output, and reproducibility.
 
 #### Parameters
 
-experiment_input_keys : Any or list[Any]
-    Candidate input keys used by the experiments.
-generate_input_comb : bool, default=True
-    If ``True``, generate every non-empty combination of the candidate
-    input keys. If ``False``, use all candidate keys as one combination.
-experiment_target_keys : Any or list[Any]
-    Target keys included in every experiment unit.
-input_comb_custom : list[Any or list[Any]], optional
-    Explicit input combinations. When supplied, this value overrides
-    ``experiment_input_keys`` and ``generate_input_comb``.
-input_key_abbr : dict or list, optional
-    Short labels used to construct combination directory names. A list is
-    aligned with the resolved input-key order; a dictionary must contain
-    exactly the resolved input keys.
-random_seed : int, optional
-    Base random seed. A seed is generated when omitted.
-random_seed_scope : list[str]
-    Random-number systems to seed. Supported values are ``"random"``,
-    ``"numpy"``, and ``"torch"``.
-data_level : {"raw", "dataset", "dataloader"}
-    Representation yielded for each split.
-data_representation : {"original", "pt"}
-    Data representation inside a dataset. ``"pt"`` converts supported
-    arrays to PyTorch tensors.
-load_prepared_data : bool, default=True
-    Load prepared data from ``store_dir`` instead of running data
-    preparation from ``data_dicts``.
-store_dir : str
-    Root directory for prepared data, experiment configuration, and result
-    files.
-debug_flag : int
-    User-controlled debugging flag carried in the configuration.
+- **`experiment_input_keys`** (`Any or list[Any]`): Candidate input keys used by the experiments.
+- **`generate_input_comb`** (`bool, default=True`): If ``True``, generate every non-empty combination of the candidate input keys. If ``False``, use all candidate keys as one combination.
+- **`experiment_target_keys`** (`Any or list[Any]`): Target keys included in every experiment unit.
+- **`input_comb_custom`** (`list[Any or list[Any]], optional`): Explicit input combinations. When supplied, this value overrides ``experiment_input_keys`` and ``generate_input_comb``.
+- **`input_key_abbr`** (`dict or list, optional`): Short labels used to construct combination directory names. A list is aligned with the resolved input-key order; a dictionary must contain exactly the resolved input keys.
+- **`random_seed`** (`int, optional`): Base random seed. A seed is generated when omitted.
+- **`random_seed_scope`** (`list[str]`): Random-number systems to seed. Supported values are ``"random"``, ``"numpy"``, and ``"torch"``.
+- **`data_level`** (`{"raw", "dataset", "dataloader"}`): Representation yielded for each split.
+- **`data_representation`** (`{"original", "pt"}`): Data representation inside a dataset. ``"pt"`` converts supported arrays to PyTorch tensors.
+- **`load_prepared_data`** (`bool, default=True`): Load prepared data from ``store_dir`` instead of running data preparation from ``data_dicts``.
+- **`store_dir`** (`str`): Root directory for prepared data, experiment configuration, and result files.
+- **`debug_flag`** (`int`): User-controlled debugging flag carried in the configuration.
 
 #### Attributes
 
@@ -2153,8 +1926,7 @@ Normalize input-key abbreviations to a complete dictionary.
 
 ###### Parameters
 
-abbreviations : dict, list, or None
-    User-supplied abbreviations.
+- **`abbreviations`** (`dict, list, or None`): User-supplied abbreviations.
 
 ###### Returns
 
@@ -2173,14 +1945,9 @@ Extend :class:`ExperimentConfig` with PyTorch DataLoader settings.
 
 #### Parameters
 
-train_batch_size, valid_batch_size, test_batch_size : int
-    Batch sizes used for the corresponding splits.
-shuffle_train_data, shuffle_valid_data, shuffle_test_data : bool
-    Whether the corresponding DataLoader shuffles its dataset.
-use_gpu : bool
-    Whether tensor-conversion helpers may place tensors on CUDA. Moving
-    tensors to the model device inside the training loop is generally more
-    flexible, so the default dataset workflow keeps tensors on CPU.
+- **`train_batch_size, valid_batch_size, test_batch_size`** (`int`): Batch sizes used for the corresponding splits.
+- **`shuffle_train_data, shuffle_valid_data, shuffle_test_data`** (`bool`): Whether the corresponding DataLoader shuffles its dataset.
+- **`use_gpu`** (`bool`): Whether tensor-conversion helpers may place tensors on CUDA. Moving tensors to the model device inside the training loop is generally more flexible, so the default dataset workflow keeps tensors on CPU.
 
 #### Declared fields
 
@@ -2217,36 +1984,21 @@ Carry runtime metadata for one input-combination and fold condition.
 
 #### Parameters
 
-fold : Any
-    Fold identifier stored in the prepared split information.
-comb_index : int
-    Zero-based position of the input combination in the experiment plan.
-comb_name : str
-    File-system-safe name for the input combination.
-input_comb : list[Any]
-    Input keys used by this condition.
-target_keys : list[Any]
-    Target keys included in this condition.
-split_indexes : dict[str, list[int]]
-    Original ``data_dicts`` indexes assigned to each split.
-prepared_split_indexes : dict[str, list[int]]
-    Corresponding positions used to index ``collected_data``.
-ref_value_splits : dict[str, list[Any]]
-    Split reference values, such as speaker or group identifiers.
-standardization_info : dict
-    Mean, standard deviation, and scope used for each standardized input.
-info_dict : dict
-    Shared information produced during data preparation.
-exp_config : ExperimentConfig
-    Experiment configuration.
-data_prep_config : Any
-    Data-preparation configuration.
-output_dir : str
-    Recommended output directory for this condition.
-seed : int
-    Base experiment seed.
-user_extras : dict
-    Additional user-defined runtime information.
+- **`fold`** (`Any`): Fold identifier stored in the prepared split information.
+- **`comb_index`** (`int`): Zero-based position of the input combination in the experiment plan.
+- **`comb_name`** (`str`): File-system-safe name for the input combination.
+- **`input_comb`** (`list[Any]`): Input keys used by this condition.
+- **`target_keys`** (`list[Any]`): Target keys included in this condition.
+- **`split_indexes`** (`dict[str, list[int]]`): Original ``data_dicts`` indexes assigned to each split.
+- **`prepared_split_indexes`** (`dict[str, list[int]]`): Corresponding positions used to index ``collected_data``.
+- **`ref_value_splits`** (`dict[str, list[Any]]`): Split reference values, such as speaker or group identifiers.
+- **`standardization_info`** (`dict`): Mean, standard deviation, and scope used for each standardized input.
+- **`info_dict`** (`dict`): Shared information produced during data preparation.
+- **`exp_config`** (`ExperimentConfig`): Experiment configuration.
+- **`data_prep_config`** (`Any`): Data-preparation configuration.
+- **`output_dir`** (`str`): Recommended output directory for this condition.
+- **`seed`** (`int`): Base experiment seed.
+- **`user_extras`** (`dict`): Additional user-defined runtime information.
 
 #### Declared fields
 
@@ -2293,10 +2045,8 @@ Represent the data and context of one executable experiment condition.
 
 #### Parameters
 
-data : dict[str, Any]
-    Train, validation, and test data in the configured data level.
-context : RunContext
-    Runtime information associated with the condition.
+- **`data`** (`dict[str, Any]`): Train, validation, and test data in the configured data level.
+- **`context`** (`RunContext`): Runtime information associated with the condition.
 
 #### Declared fields
 
@@ -2357,16 +2107,10 @@ generator over all input-combination and fold conditions.
 
 #### Parameters
 
-exp_config : ExperimentConfig
-    Experiment-level configuration.
-data_dicts : list[dict], optional
-    Source sample information and data. Required when
-    ``exp_config.load_prepared_data`` is ``False``.
-data_prep_config : Any, optional
-    Configuration passed to ``data_prep.DataPreparator``. Required when
-    prepared data is not loaded.
-user_extras : dict, optional
-    Additional information copied into every :class:`RunContext`.
+- **`exp_config`** (`ExperimentConfig`): Experiment-level configuration.
+- **`data_dicts`** (`list[dict], optional`): Source sample information and data. Required when ``exp_config.load_prepared_data`` is ``False``.
+- **`data_prep_config`** (`Any, optional`): Configuration passed to ``data_prep.DataPreparator``. Required when prepared data is not loaded.
+- **`user_extras`** (`dict, optional`): Additional information copied into every :class:`RunContext`.
 
 #### Constructor and protocol methods
 
@@ -2420,8 +2164,7 @@ Seed configured random-number systems.
 
 ###### Parameters
 
-random_seed : int
-    Seed applied to the configured systems.
+- **`random_seed`** (`int`): Seed applied to the configured systems.
 
 ##### `ExperimentManager.get_prepared_data`
 
@@ -2455,10 +2198,8 @@ Post-process predictions and calculate task metrics.
 
 ###### Parameters
 
-pred, true : Any
-    Prediction and target arrays or tensors.
-task_type : {"c", "r"}
-    Classification or regression task type.
+- **`pred, true`** (`Any`): Prediction and target arrays or tensors.
+- **`task_type`** (`{"c", "r"}`): Classification or regression task type.
 
 ###### Returns
 
@@ -2480,10 +2221,8 @@ Wrapper for post-process tensor. Convert tensors or array-like values to NumPy e
 
 ###### Parameters
 
-tensor : Any
-    PyTorch tensor, NumPy array, or array-like value.
-task_type : {"c", "r"}
-    Classification or regression task type.
+- **`tensor`** (`Any`): PyTorch tensor, NumPy array, or array-like value.
+- **`task_type`** (`{"c", "r"}`): Classification or regression task type.
 
 ###### Returns
 
@@ -2537,13 +2276,9 @@ Save a result globally or under one run's output directory.
 
 ###### Parameters
 
-result : Any
-    Pickle-serializable result object.
-context : RunContext, optional
-    When supplied, save below ``context.output_dir``. Otherwise save
-    below the manager's ``store_dir``.
-file_name : str
-    Output file name.
+- **`result`** (`Any`): Pickle-serializable result object.
+- **`context`** (`RunContext, optional`): When supplied, save below ``context.output_dir``. Otherwise save below the manager's ``store_dir``.
+- **`file_name`** (`str`): Output file name.
 
 ###### Returns
 
@@ -2573,10 +2308,8 @@ Load saved experiment configuration, preparation config, and results.
 
 #### Parameters
 
-result_dir : str
-    Directory containing the saved files.
-exp_config_file, data_prep_config_file, result_file : str
-    File names relative to ``result_dir``.
+- **`result_dir`** (`str`): Directory containing the saved files.
+- **`exp_config_file, data_prep_config_file, result_file`** (`str`): File names relative to ``result_dir``.
 
 #### Constructor and protocol methods
 
@@ -2606,8 +2339,7 @@ Generate every non-empty combination of the given keys.
 
 ##### Parameters
 
-keys : sequence
-    Input keys in the desired combination order.
+- **`keys`** (`sequence`): Input keys in the desired combination order.
 
 ##### Returns
 
@@ -2624,8 +2356,7 @@ Load data, preparation information, and preparation configuration.
 
 ##### Parameters
 
-data_dir : str
-    Directory created by ``data_prep.save_data``.
+- **`data_dir`** (`str`): Directory created by ``data_prep.save_data``.
 
 ##### Returns
 
@@ -2658,16 +2389,11 @@ samples and therefore should only be selected deliberately.
 
 ##### Parameters
 
-collected_data : dict
-    Prepared modality, target, and index data.
-info_dict : dict
-    Data-preparation information including split folds and index mappings.
-exp_config : ExperimentConfig
-    Experiment configuration.
-data_prep_config : Any
-    Preparation configuration containing ``key2config``.
-user_extras : dict, optional
-    Additional information copied into each run context.
+- **`collected_data`** (`dict`): Prepared modality, target, and index data.
+- **`info_dict`** (`dict`): Data-preparation information including split folds and index mappings.
+- **`exp_config`** (`ExperimentConfig`): Experiment configuration.
+- **`data_prep_config`** (`Any`): Preparation configuration containing ``key2config``.
+- **`user_extras`** (`dict, optional`): Additional information copied into each run context.
 
 ##### Yields
 
@@ -2718,12 +2444,9 @@ Select specified prepared-data positions for a group of keys.
 
 ##### Parameters
 
-collected_data : mapping
-    Prepared data keyed by input, target, or index key.
-keys : sequence
-    Keys to include in the result.
-index_list : sequence[int]
-    Positions in the prepared data arrays/lists.
+- **`collected_data`** (`mapping`): Prepared data keyed by input, target, or index key.
+- **`keys`** (`sequence`): Keys to include in the result.
+- **`index_list`** (`sequence[int]`): Positions in the prepared data arrays/lists.
 
 ##### Returns
 
@@ -2743,10 +2466,8 @@ Standardize numeric data with zero-variance protection.
 
 ##### Parameters
 
-data_array : array-like
-    Numeric data.
-axis : int or tuple[int, ...]
-    Axes used to calculate the mean and standard deviation.
+- **`data_array`** (`array-like`): Numeric data.
+- **`axis`** (`int or tuple[int, ...]`): Axes used to calculate the mean and standard deviation.
 
 ##### Returns
 
@@ -2766,11 +2487,8 @@ Collect configured input and target shapes available in a dataset.
 
 ##### Parameters
 
-datasets : mapping
-    Split datasets or raw split dictionaries containing ``"train"``.
-info_dict : mapping
-    Data-preparation information containing ``input_shapes`` and
-    ``target_info``.
+- **`datasets`** (`mapping`): Split datasets or raw split dictionaries containing ``"train"``.
+- **`info_dict`** (`mapping`): Data-preparation information containing ``input_shapes`` and ``target_info``.
 
 ##### Returns
 
@@ -2791,13 +2509,9 @@ Create a dictionary-backed PyTorch dataset.
 
 ##### Parameters
 
-single_condition_data : dict
-    Data for one train, validation, or test split.
-data_representation : {"original", "pt"}
-    Keep values unchanged or convert supported values to tensors.
-use_gpu : bool
-    Place converted tensors on CUDA. CPU tensors are recommended when the
-    dataset will be wrapped by a DataLoader.
+- **`single_condition_data`** (`dict`): Data for one train, validation, or test split.
+- **`data_representation`** (`{"original", "pt"}`): Keep values unchanged or convert supported values to tensors.
+- **`use_gpu`** (`bool`): Place converted tensors on CUDA. CPU tensors are recommended when the dataset will be wrapped by a DataLoader.
 
 ##### Returns
 
@@ -2822,12 +2536,9 @@ Python objects are kept unchanged.
 
 ##### Parameters
 
-single_condition_data : mapping
-    Split data keyed by modality, target, or metadata key.
-exclude_keys : iterable, optional
-    Keys copied without conversion.
-use_gpu : bool
-    Move converted tensors to CUDA when available.
+- **`single_condition_data`** (`mapping`): Split data keyed by modality, target, or metadata key.
+- **`exclude_keys`** (`iterable, optional`): Keys copied without conversion.
+- **`use_gpu`** (`bool`): Move converted tensors to CUDA when available.
 
 ##### Returns
 
@@ -2848,12 +2559,9 @@ Create a PyTorch DataLoader from a non-empty dataset.
 
 ##### Parameters
 
-dataset : TorchDataset
-    Dataset to batch.
-batch_size : int
-    Positive number of samples per batch.
-shuffle : bool
-    Whether to shuffle sample order.
+- **`dataset`** (`TorchDataset`): Dataset to batch.
+- **`batch_size`** (`int`): Positive number of samples per batch.
+- **`shuffle`** (`bool`): Whether to shuffle sample order.
 
 ##### Returns
 
@@ -2875,13 +2583,9 @@ Convert tensors or array-like values to NumPy evaluation arrays.
 
 ##### Parameters
 
-tensor : Any
-    PyTorch tensor, NumPy array, or array-like value.
-mode : {"raw", "argmax"}
-    Return raw values or take the final-axis argmax first.
-use_gpu : bool, optional
-    Deprecated compatibility argument. Device handling is inferred from the
-    tensor itself.
+- **`tensor`** (`Any`): PyTorch tensor, NumPy array, or array-like value.
+- **`mode`** (`{"raw", "argmax"}`): Return raw values or take the final-axis argmax first.
+- **`use_gpu`** (`bool, optional`): Deprecated compatibility argument. Device handling is inferred from the tensor itself.
 
 ##### Returns
 
@@ -2906,8 +2610,7 @@ Construct an experiment configuration from saved JSON content.
 
 ##### Parameters
 
-config_json : sequence
-    Two-element sequence containing class name and constructor fields.
+- **`config_json`** (`sequence`): Two-element sequence containing class name and constructor fields.
 
 ##### Returns
 
@@ -3209,14 +2912,9 @@ Map each reference value to its corresponding sample indexes.
 
 ##### Parameters
 
-data_dicts : list of dict
-    Sample-level information records. Every processed dictionary must
-    contain ``ref_key``.
-ref_key : Any, optional
-    Dictionary key whose values define the reference groups, such as a
-    speaker, participant, session, or group identifier.
-used_indexes : list of int or None, optional
-    Subset of sample indexes to process. If ``None``, all samples are used.
+- **`data_dicts`** (`list of dict`): Sample-level information records. Every processed dictionary must contain ``ref_key``.
+- **`ref_key`** (`Any, optional`): Dictionary key whose values define the reference groups, such as a speaker, participant, session, or group identifier.
+- **`used_indexes`** (`list of int or None, optional`): Subset of sample indexes to process. If ``None``, all samples are used.
 
 ##### Returns
 
@@ -3246,13 +2944,9 @@ Collect one reference value for each processed sample.
 
 ##### Parameters
 
-data_dicts : list of dict
-    Sample-level information records. Every processed dictionary must
-    contain ``ref_key``.
-ref_key : Any, optional
-    Dictionary key whose value is collected from each sample.
-used_indexes : list of int or None, optional
-    Subset of sample indexes to process. If ``None``, all samples are used.
+- **`data_dicts`** (`list of dict`): Sample-level information records. Every processed dictionary must contain ``ref_key``.
+- **`ref_key`** (`Any, optional`): Dictionary key whose value is collected from each sample.
+- **`used_indexes`** (`list of int or None, optional`): Subset of sample indexes to process. If ``None``, all samples are used.
 
 ##### Returns
 
@@ -3285,19 +2979,11 @@ its participant identifiers.
 
 ##### Parameters
 
-data_dicts : list of dict
-    Sample-level information records. Every processed dictionary must
-    contain both ``ref_key`` and ``another_key``.
-ref_key : Any, optional
-    Dictionary key whose values become the keys of the returned mapping.
-another_key : Any, optional
-    Dictionary key whose values are collected for each reference value.
-used_indexes : list of int or None, optional
-    Subset of sample indexes to process. If ``None``, all samples are used.
-unique_values : bool, optional
-    If ``True``, equivalent repeated values are stored only once for each
-    reference value. If ``False``, all values are retained, including
-    repetitions. Array-like values are supported in either mode.
+- **`data_dicts`** (`list of dict`): Sample-level information records. Every processed dictionary must contain both ``ref_key`` and ``another_key``.
+- **`ref_key`** (`Any, optional`): Dictionary key whose values become the keys of the returned mapping.
+- **`another_key`** (`Any, optional`): Dictionary key whose values are collected for each reference value.
+- **`used_indexes`** (`list of int or None, optional`): Subset of sample indexes to process. If ``None``, all samples are used.
+- **`unique_values`** (`bool, optional`): If ``True``, equivalent repeated values are stored only once for each reference value. If ``False``, all values are retained, including repetitions. Array-like values are supported in either mode.
 
 ##### Returns
 
@@ -3327,15 +3013,9 @@ The order supplied by ``used_indexes`` is preserved.
 
 ##### Parameters
 
-data_dicts : list of dict
-    Ordered sample-level records representing one dialogue, conversation,
-    event, or other sequence.
-ref_key : Any, optional
-    Dictionary key used to determine whether consecutive samples belong to
-    the same turn. This is typically a speaker or participant identifier.
-used_indexes : list of int or None, optional
-    Ordered subset of sample indexes to process. If ``None``, all samples
-    are used.
+- **`data_dicts`** (`list of dict`): Ordered sample-level records representing one dialogue, conversation, event, or other sequence.
+- **`ref_key`** (`Any, optional`): Dictionary key used to determine whether consecutive samples belong to the same turn. This is typically a speaker or participant identifier.
+- **`used_indexes`** (`list of int or None, optional`): Ordered subset of sample indexes to process. If ``None``, all samples are used.
 
 ##### Returns
 
@@ -3363,13 +3043,9 @@ Map each reference value to the sample-index lists of its turns.
 
 ##### Parameters
 
-data_dicts : list of dict
-    Ordered sample-level records representing a sequence.
-ref_key : Any, optional
-    Dictionary key used to identify the owner of each turn.
-used_indexes : list of int or None, optional
-    Ordered subset of sample indexes to process. If ``None``, all samples
-    are used.
+- **`data_dicts`** (`list of dict`): Ordered sample-level records representing a sequence.
+- **`ref_key`** (`Any, optional`): Dictionary key used to identify the owner of each turn.
+- **`used_indexes`** (`list of int or None, optional`): Ordered subset of sample indexes to process. If ``None``, all samples are used.
 
 ##### Returns
 
@@ -3391,13 +3067,9 @@ Map each reference value to its zero-based turn IDs.
 
 ##### Parameters
 
-data_dicts : list of dict
-    Ordered sample-level records representing a sequence.
-ref_key : Any, optional
-    Dictionary key used to identify the owner of each turn.
-used_indexes : list of int or None, optional
-    Ordered subset of sample indexes to process. If ``None``, all samples
-    are used.
+- **`data_dicts`** (`list of dict`): Ordered sample-level records representing a sequence.
+- **`ref_key`** (`Any, optional`): Dictionary key used to identify the owner of each turn.
+- **`used_indexes`** (`list of int or None, optional`): Ordered subset of sample indexes to process. If ``None``, all samples are used.
 
 ##### Returns
 
@@ -3421,13 +3093,9 @@ Turn boundaries are not retained in the returned value.
 
 ##### Parameters
 
-data_dicts : list of dict
-    Ordered sample-level records representing a sequence.
-ref_key : Any, optional
-    Dictionary key used to identify the owner of each turn.
-used_indexes : list of int or None, optional
-    Ordered subset of sample indexes to process. If ``None``, all samples
-    are used.
+- **`data_dicts`** (`list of dict`): Ordered sample-level records representing a sequence.
+- **`ref_key`** (`Any, optional`): Dictionary key used to identify the owner of each turn.
+- **`used_indexes`** (`list of int or None, optional`): Ordered subset of sample indexes to process. If ``None``, all samples are used.
 
 ##### Returns
 
@@ -3460,18 +3128,11 @@ non-consecutive gaps.
 
 ##### Parameters
 
-data_dicts : list of dict
-    Ordered sample-level records representing a sequence.
-ref_key : Any, optional
-    Dictionary key whose values are compared between adjacent items.
-prev_or_following : {"prev", "following"}, optional
-    Direction of adjacency relative to the current sample or turn.
-adjacent_by : {"index", "turn"}, optional
-    Unit used to define adjacency. ``"index"`` compares neighboring sample
-    indexes; ``"turn"`` compares neighboring turns.
-used_indexes : list of int or None, optional
-    Ordered subset of sample indexes to process. If ``None``, all samples
-    are used.
+- **`data_dicts`** (`list of dict`): Ordered sample-level records representing a sequence.
+- **`ref_key`** (`Any, optional`): Dictionary key whose values are compared between adjacent items.
+- **`prev_or_following`** (`{"prev", "following"}, optional`): Direction of adjacency relative to the current sample or turn.
+- **`adjacent_by`** (`{"index", "turn"}, optional`): Unit used to define adjacency. ``"index"`` compares neighboring sample indexes; ``"turn"`` compares neighboring turns.
+- **`used_indexes`** (`list of int or None, optional`): Ordered subset of sample indexes to process. If ``None``, all samples are used.
 
 ##### Returns
 
@@ -3505,21 +3166,11 @@ two intervals.
 
 ##### Parameters
 
-data_dicts : list of dict
-    Ordered sample-level records representing a sequence.
-ref_key : Any, optional
-    Dictionary key used to identify turns when
-    ``interval_split_by="turn"``.
-interval_num : int, optional
-    Number of intervals to create. The returned dictionary always contains
-    this many interval keys, although some intervals may be empty when
-    there are fewer samples or turns than intervals.
-interval_split_by : {"index", "turn"}, optional
-    Whether interval boundaries are based on sample indexes or complete
-    turns.
-used_indexes : list of int or None, optional
-    Ordered subset of sample indexes to process. If ``None``, all samples
-    are used.
+- **`data_dicts`** (`list of dict`): Ordered sample-level records representing a sequence.
+- **`ref_key`** (`Any, optional`): Dictionary key used to identify turns when ``interval_split_by="turn"``.
+- **`interval_num`** (`int, optional`): Number of intervals to create. The returned dictionary always contains this many interval keys, although some intervals may be empty when there are fewer samples or turns than intervals.
+- **`interval_split_by`** (`{"index", "turn"}, optional`): Whether interval boundaries are based on sample indexes or complete turns.
+- **`used_indexes`** (`list of int or None, optional`): Ordered subset of sample indexes to process. If ``None``, all samples are used.
 
 ##### Returns
 
@@ -3550,11 +3201,8 @@ Resolve and validate the sample indexes to be processed.
 
 ##### Parameters
 
-data_dicts : list of dict
-    Sample-level information records.
-used_indexes : list of int or None
-    Indexes to process. If ``None``, all indexes are returned in their
-    original order.
+- **`data_dicts`** (`list of dict`): Sample-level information records.
+- **`used_indexes`** (`list of int or None`): Indexes to process. If ``None``, all indexes are returned in their original order.
 
 ##### Returns
 
@@ -3581,10 +3229,8 @@ Compare two values while supporting scalar and array-like objects.
 
 ##### Parameters
 
-left : Any
-    First value to compare.
-right : Any
-    Second value to compare.
+- **`left`** (`Any`): First value to compare.
+- **`right`** (`Any`): Second value to compare.
 
 ##### Returns
 
@@ -3605,10 +3251,8 @@ Check whether a list contains a value equivalent to a candidate.
 
 ##### Parameters
 
-values : list
-    Existing values to search.
-candidate : Any
-    Candidate value, which may be a scalar or an array-like object.
+- **`values`** (`list`): Existing values to search.
+- **`candidate`** (`Any`): Candidate value, which may be a scalar or an array-like object.
 
 ##### Returns
 
