@@ -701,10 +701,3 @@ Contributions are welcome. Before opening a pull request:
 
 ## Citation
 
-Citation metadata has not been supplied yet. Before the first public release, add a `CITATION.cff` file and replace this section with the preferred software citation.
-
----
-
-## License
-
-Add the selected open-source license as `LICENSE` before public release, and update this section with its name.
