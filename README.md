@@ -1,6 +1,6 @@
 # FlexMM
 
-Language: [English](README.md) | [中文](docs/README.zh-CN.md) | [日本語](docs/README.ja.md)
+Language: **English** | [中文](docs/README.zh-CN.md) | [日本語](docs/README.ja.md)
 
 **FlexMM** is a model-agnostic Python framework for sequence-aware multimodal data preparation and reproducible experiment orchestration.
 
