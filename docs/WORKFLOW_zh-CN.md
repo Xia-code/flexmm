@@ -1,6 +1,6 @@
 # FlexMM 完整流程指南
 
-[English](WORKFLOW.md) | **简体中文** | [日本語](WORKFLOW_ja.md)
+[English](../WORKFLOW.md) | **简体中文** | [日本語](WORKFLOW_ja.md)
 
 本文档说明 FlexMM 的完整生命周期：从按顺序排列的样本字典列表，到每个 fold 对应的实验单元和结果保存。
 
