@@ -699,17 +699,5 @@ See [`docs/WORKFLOW.md`](docs/WORKFLOW.md) for:
 
 ---
 
-## Contributing
-
-Contributions are welcome. Before opening a pull request:
-
-1. add or update tests for behavior changes;
-2. keep public docstrings synchronized with the implementation;
-3. avoid introducing validation/test leakage;
-4. document compatibility or serialization changes;
-5. preserve deterministic behavior unless randomness is explicit and seeded.
-
----
-
 ## Citation
 
